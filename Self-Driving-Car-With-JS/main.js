@@ -5,13 +5,11 @@ canvas.width = 200;
 const ctx = canvas.getContext("2d");
 const road = new Road(canvas.width / 2, canvas.width * .9); //the .9 is to leave a small space outside the white lines on the edges
 const car = new Car(road.getTheLaneCenter(1), 100, 30, 50);
-car.draw(ctx);
 
-animate()
-
+animate();
 
 function animate() {
-    car.update();
+    car.update(road.borders);
     canvas.height = window.innerHeight;
 
     ctx.save();

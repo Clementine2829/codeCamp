@@ -12,12 +12,13 @@ class Car {
         this.angle = 0;
 
 
+        this.sensor = new Sensor(this);
         this.controls = new Controls();
     }
 
-    update() {
+    update(roadBorders) {
         this.#move();
-
+        this.sensor.update(roadBorders);
 
 
     }
@@ -66,6 +67,7 @@ class Car {
         ctx.fill();
 
         ctx.restore(); // to prevent infinit rotations
+        this.sensor.draw(ctx); // tell the sensor to draw itself
     }
 
 }
